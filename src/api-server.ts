@@ -9,16 +9,23 @@ export class ApiServer {
 
     private app: express.Application;
     private server: http.Server = null;
-    public PORT: number = process.env.PORT || 3000;
+    public PORT: string | number = process.env.PORT || 3000;
 
     constructor() {
         this.app = express();
         this.config();
 
         Server.buildServices(this.app, ...controllers);
+
         // TODO: enable for Swagger generation error
         // Server.loadServices(this.app, 'controllers/*', __dirname);
-        Server.swagger(this.app, './dist/swagger.json', '/api-docs', 'localhost:3000', ['http']);
+        // tslint:disable-next-line:no-console
+        Server.swagger(this.app, path.join(__dirname, '../dist/swagger.json'), '/api-docs', 'localhost:3000', ['http']);
+
+        // fallback to index.html if in SPA pressed Ctrl+F5
+        this.app.use(function (req, res, next) {
+            res.sendFile(path.join(__dirname,'./public/index.html'));
+        });
     }
 
     /**

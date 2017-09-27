@@ -5,9 +5,10 @@
   "repository": "https://github.com/vrudikov/typescript-rest-boilerplate.git",
   "license": "MIT",
   "scripts": {
-    "start": "./node_modules/.bin/ts-node src/index.ts",
+    "start": "set NODE_ENV=dev && ts-node src/index.ts",
+    "nodemon": "set NODE_ENV=dev && nodemon",
     "start:cluster": "./node_modules/.bin/ts-node src/cluster.ts",
-    "build": "npm run clean && tsc && npm run swagger",
+    "build": "tsc && npm run swagger && cp -R src/public/. dist/public",
     "clean": "rimraf dist",
     "lint": "tslint ./src/**/*.ts ./test/**/*.ts",
     "format": "tsfmt -r",
@@ -19,18 +20,20 @@
     "doc": "typedoc --out ./doc/ --name 'Typescript-rest-Boilerplate' --readme ./README.MD --module commonjs --target ES6 --includeDeclarations --excludePrivate --excludeExternals ./src"
   },
   "dependencies": {
+    "soltsice": "^0.4.1",
     "typescript-rest": "^1.1.1",
     "typescript-rest-swagger": "0.0.10"
   },
   "devDependencies": {
     "@types/chai": "^4.0.2",
+    "@types/cors": "^2.8.1",
     "@types/mocha": "^2.2.41",
     "@types/request": "0.0.43",
-    "@types/cors": "^2.8.1",
     "chai": "^3.5.0",
     "cross-env": "^4.0.0",
     "istanbul": "^0.4.5",
     "mocha": "^3.5.0",
+    "nodemon": "^1.12.1",
     "nyc": "^10.3.2",
     "request": "^2.81.0",
     "rimraf": "^2.6.1",
