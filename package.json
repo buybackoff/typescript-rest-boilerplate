@@ -1,12 +1,13 @@
 {
-  "name": "typescript-rest-boilerplate",
-  "version": "0.0.1",
-  "description": "Boilerplate project for awesome typescript-rest library",
-  "repository": "https://github.com/vrudikov/typescript-rest-boilerplate.git",
+  "name": "dbrain-server",
+  "version": "0.1.0",
+  "private": true,
+  "description": "DBrain Server",
+  "repository": "git@github.com:dbrainio/Server.git",
   "license": "MIT",
   "scripts": {
-    "start": "set NODE_ENV=dev && ts-node src/index.ts",
-    "nodemon": "set NODE_ENV=dev && nodemon",
+    "start": "set NODE_ENV=dev && nodemon",
+    "start:noreload": "set NODE_ENV=dev && ts-node src/index.ts",
     "start:cluster": "./node_modules/.bin/ts-node src/cluster.ts",
     "build": "tsc && npm run swagger && copyfiles -u 2 src/public/**/* dist/public",
     "copyfiles": "copyfiles -u 2 src/public/**/* dist/public",
@@ -18,7 +19,7 @@
     "test:coverage": "nyc npm test",
     "swagger": "swaggerGen -c ./swagger.config.json",
     "tsc": "tsc",
-    "doc": "typedoc --out ./doc/ --name 'Typescript-rest-Boilerplate' --readme ./README.MD --module commonjs --target ES6 --includeDeclarations --excludePrivate --excludeExternals ./src"
+    "doc": "typedoc --out ./doc/ --name 'DBrain Server' --readme ./README.MD --module commonjs --target ES6 --includeDeclarations --excludePrivate --excludeExternals ./src"
   },
   "dependencies": {
     "soltsice": "^0.4.1",
@@ -29,7 +30,7 @@
     "@types/chai": "^4.0.2",
     "@types/cors": "^2.8.1",
     "@types/mocha": "^2.2.41",
-    "@types/request": "0.0.43",
+    "@types/request": "^2.0.3",
     "chai": "^3.5.0",
     "cross-env": "^4.0.0",
     "istanbul": "^0.4.5",
@@ -39,10 +40,9 @@
     "request": "^2.81.0",
     "rimraf": "^2.6.1",
     "source-map-support": "^0.4.15",
-    "ts-node": "~3.0.6",
-    "tslint": "~5.4.3",
+    "ts-node": "^3.3.0",
+    "tslint": "^5.7.0",
     "typedoc": "^0.5.10",
-    "typescript": "~2.3.4",
     "typescript-formatter": "^5.2.0"
   },
   "nyc": {

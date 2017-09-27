@@ -40,3 +40,14 @@ npm run doc
 ```
 
 The project documentation will be saved under ```./doc``` folder.
+
+
+## License
+
+MIT
+
+## Dependencies
+
+Based on [typescript-rest-boilerplate](https://github.com/vrudikov/typescript-rest-boilerplate) and depends on [typescript-rest](https://github.com/thiagobustamante/typescript-rest) among others.
+
+Used Soltsice library for strongly typed Ethereum contracts and web3 API.
