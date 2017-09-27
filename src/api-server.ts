@@ -20,7 +20,7 @@ export class ApiServer {
         // TODO: enable for Swagger generation error
         // Server.loadServices(this.app, 'controllers/*', __dirname);
         // tslint:disable-next-line:no-console
-        Server.swagger(this.app, path.join(__dirname, '../dist/swagger.json'), '/api-docs', 'localhost:3000', ['http']);
+        Server.swagger(this.app, path.join(__dirname, '../dist/swagger.json'), '/api-docs'); // , 'localhost:3000', ['https']
 
         // fallback to index.html if in SPA pressed Ctrl+F5
         this.app.use(function (req, res, next) {
